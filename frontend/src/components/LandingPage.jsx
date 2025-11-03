@@ -21,7 +21,7 @@ export default function LandingPage() {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", lg: "row" },
           gap: 4,
         }}
       >
@@ -63,7 +63,10 @@ export default function LandingPage() {
           >
             <Button
               href="/survey"
-              sx={{fontSize: "1.5rem"}}
+              sx={{
+                fontSize: "1.5rem",
+                whiteSpace: "nowrap"
+              }}
               variant="outlined"
             >
               Take the Survey
@@ -89,7 +92,10 @@ export default function LandingPage() {
             <Button
               color="discord"
               href="https://discord.gg/uUD65Kjrmw"
-              sx={{fontSize: "1.5rem"}}
+              sx={{
+                fontSize: "1.5rem",
+                whiteSpace: "nowrap"
+              }}
               variant="contained"
             >
               <DiscordIcon size="1.5rem"/>&nbsp;
@@ -100,20 +106,18 @@ export default function LandingPage() {
         <Box
           sx={{
             display: "flex",
-            justifyContent: {xs: "center", md: "flex-end"},
+            justifyContent: {xs: "center", lg: "flex-end"},
           }}
         >
           <iframe
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             frameborder="0"
+            height="315"
             referrerpolicy="strict-origin-when-cross-origin"
             src="https://www.youtube.com/embed/vu1SOd7oHfA?si=1ntBOoLGudfjzJYN"
-            sx={{
-              height: { xs: 200, md: 315 },
-              width: { xs: '100%', md: 560 },
-            }}
             title="YouTube video player"
+            width="560"
           />
         </Box>
       </Box>
