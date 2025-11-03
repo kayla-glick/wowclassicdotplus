@@ -111,10 +111,10 @@ export default function LandingPage() {
         >
           <iframe
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            frameborder="0"
+            allowFullScreen
+            frameBorder="0"
             height="315"
-            referrerpolicy="strict-origin-when-cross-origin"
+            referrerPolicy="strict-origin-when-cross-origin"
             src="https://www.youtube.com/embed/vu1SOd7oHfA?si=1ntBOoLGudfjzJYN"
             title="YouTube video player"
             width="560"
@@ -129,10 +129,10 @@ export default function LandingPage() {
         >
           <iframe
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            frameborder="0"
+            allowFullScreen
+            frameBorder="0"
             height="200"
-            referrerpolicy="strict-origin-when-cross-origin"
+            referrerPolicy="strict-origin-when-cross-origin"
             src="https://www.youtube.com/embed/vu1SOd7oHfA?si=1ntBOoLGudfjzJYN"
             title="YouTube video player"
             width="355"
