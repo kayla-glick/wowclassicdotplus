@@ -57,7 +57,7 @@ export default function LandingPage() {
             sx={{
               alignItems: "center",
               display: "flex",
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: { xs: "column", sm: "row" },
               gap: 4
             }}
           >
@@ -76,7 +76,7 @@ export default function LandingPage() {
               flexItem
               sx={{
                 borderColor: "text.primary",
-                display: { xs: "none", md: "block" },
+                display: { xs: "none", sm: "block" },
                 my: -1
               }}
               orientation="vertical"
@@ -107,7 +107,6 @@ export default function LandingPage() {
           sx={{
             display: {xs: "none", sm: "flex"},
             justifyContent: {xs: "center", lg: "flex-end"},
-            maxWidth: "calc(100vw - 2rem)",
           }}
         >
           <iframe
@@ -124,7 +123,7 @@ export default function LandingPage() {
         <Box
           sx={{
             display: {xs: "flex", sm: "none"},
-            justifyContent: {xs: "center", lg: "flex-end"},
+            justifyContent: "center",
             maxWidth: "calc(100vw - 2rem)",
           }}
         >
