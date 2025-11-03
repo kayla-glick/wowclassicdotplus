@@ -91,7 +91,7 @@ export default function LandingPage() {
             </Button>
             <Button
               color="discord"
-              href="https://discord.gg/uUD65Kjrmw"
+               href="https://discord.gg/uUD65Kjrmw"
               sx={{
                 fontSize: "1.5rem",
                 whiteSpace: "nowrap"
@@ -103,12 +103,11 @@ export default function LandingPage() {
             </Button>
           </Box>
         </Box>
-        <Box
+       <Box
           sx={{
-            display: "flex",
+            display: {xs: "none", sm: "flex"},
             justifyContent: {xs: "center", lg: "flex-end"},
             maxWidth: "calc(100vw - 2rem)",
-            overflowX: "hidden",
           }}
         >
           <iframe
@@ -120,6 +119,24 @@ export default function LandingPage() {
             src="https://www.youtube.com/embed/vu1SOd7oHfA?si=1ntBOoLGudfjzJYN"
             title="YouTube video player"
             width="560"
+          />
+        </Box>
+        <Box
+          sx={{
+            display: {xs: "flex", sm: "none"},
+            justifyContent: {xs: "center", lg: "flex-end"},
+            maxWidth: "calc(100vw - 2rem)",
+          }}
+        >
+          <iframe
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            frameborder="0"
+            height="200"
+            referrerpolicy="strict-origin-when-cross-origin"
+            src="https://www.youtube.com/embed/vu1SOd7oHfA?si=1ntBOoLGudfjzJYN"
+            title="YouTube video player"
+            width="355"
           />
         </Box>
       </Box>
