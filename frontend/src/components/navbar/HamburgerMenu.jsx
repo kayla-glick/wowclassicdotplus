@@ -10,12 +10,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 import DiscordLogin from "./DiscordLogin";
 import LogoutLink from "./LogoutLink";
+import { UserContext } from "../UserContext";
 
 export default function HamburgerMenu({pages}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
+  const { user } = React.useContext(UserContext);
   const theme = useTheme();
   const location = useLocation();
 
@@ -78,7 +80,7 @@ export default function HamburgerMenu({pages}) {
           )
         })}
 
-        <LogoutLink />
+        {user && <LogoutLink />}
       </Menu>
     </Box>
   )
