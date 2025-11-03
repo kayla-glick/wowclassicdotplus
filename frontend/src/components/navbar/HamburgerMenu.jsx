@@ -47,6 +47,7 @@ export default function HamburgerMenu({pages}) {
           display: { xs: "block", md: "none" }
         }}
       >
+        <DiscordLogin />
         {pages.map((page) => (
           <MenuItem key={page} onClick={handleCloseNavMenu}>
             <Typography
@@ -60,9 +61,7 @@ export default function HamburgerMenu({pages}) {
               {page}
             </Typography>
           </MenuItem>
-        ))}
-        
-        <DiscordLogin />
+        ))}        
       </Menu>
     </Box>
   )
