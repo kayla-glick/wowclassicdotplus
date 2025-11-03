@@ -37,11 +37,7 @@ export default function LandingPage() {
             variant="h3"
           >
             Leave your mark on&nbsp;
-            <Typography
-              as="span"
-              sx={{color: "text.wowGold",}}
-              variant="wowGold"
-            >Classic+</Typography>
+            <Typography as="span" sx={{color: "text.wowGold"}} variant="h3">Classic+</Typography>
           </Typography>
           <Typography
             as="p"
@@ -52,6 +48,10 @@ export default function LandingPage() {
             community's vision for an ever-evolving World of Warcraft Classic+ experience.
             Share your thoughts and ideas in our in-depth survey and discover what others
             are saying on our forums.
+            <br />
+            <Typography as="small" sx={{color: "text.wowGold"}}>
+              Not affiliated with Blizzard Entertainment, Inc. or any of its subsidiaries.
+            </Typography>
           </Typography>
           <Box
             sx={{
