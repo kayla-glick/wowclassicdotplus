@@ -21,7 +21,9 @@ A full-stack application with React frontend and FastAPI backend.
       1. Install Postgres and Utils `sudo apt install postgresql postgresql-contrib`
       2. Start Postgres (default port 5432) `sudo service postgresql start`
       3. Run a Postgres console `sudo -u postgres psql`
-      4. In the console, create the database `CREATE DATABASE wowclassicdotplus;`, then `\q` to quit the console
+      4. In the console, create the database `CREATE DATABASE wowclassicdotplus;`
+      5. Now grant the `postgres` user access `GRANT ALL PRIVILEGES ON DATABASE "wowclassicdotplus" to postgres;`
+      6. Quit the session with `\q`
 8. Start the backend server: `uvicorn app.main:app --reload --host 0.0.0.0 --port 8000`
 
 The backend will be available at: **http://localhost:8000**
