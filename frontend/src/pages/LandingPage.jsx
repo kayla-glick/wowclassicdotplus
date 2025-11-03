@@ -7,7 +7,7 @@ import {
   Button,
   Divider,
 } from "@mui/material";
-import DiscordIcon from "./DiscordIcon";
+import DiscordIcon from "../components/DiscordIcon";
 
 export default function LandingPage() {
   return (

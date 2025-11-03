@@ -35,10 +35,10 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import PinForm from "../PinForm";
-import polygons from "../polygons";
+import PinForm from "../components/PinForm";
+import polygons from "../components/polygons";
 import * as turf from "@turf/turf";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../components/UserContext";
 import CloseIcon from '@mui/icons-material/Close';
 
 /* ===========================
@@ -405,7 +405,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'drawerOpen'
    Main Component
    =========================== */
 
-export default function CustomMap({ backendUrl }) {
+export default function MapPage({ backendUrl }) {
   const theme = useTheme();
   const { user: discordUser } = useContext(UserContext);
   const mapRef = useRef(null)
@@ -717,7 +717,7 @@ useEffect(() => {
   }
 }, [location.state, navigate, location.pathname, selectedRegion]);
   return (
-    <Box sx={{ pt: "70px", height: "calc(100vh - 70px)", width: "100%", overflow: 'hidden' }}>
+    <Box sx={{ height: "calc(100vh - 70px)", my: -4, overflow: 'hidden', width: "100%" }}>
       <Box sx={{ display: "flex", height: "100%" }}>
         {/* Map area - Now expands fully when drawer is closed */}
         <Main drawerOpen={drawerOpen}>
@@ -876,9 +876,9 @@ useEffect(() => {
             '& .MuiDrawer-paper': {
               width: 350,
               boxSizing: 'border-box',
-              mt: '70px',
               height: 'calc(100vh - 70px)',
               boxShadow: 3,
+              position: "sticky"
             },
           }}
         >

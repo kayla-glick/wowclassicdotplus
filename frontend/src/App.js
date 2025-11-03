@@ -3,11 +3,11 @@ import React from "react";
 import { Box, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route, Navigate  } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import LandingPage from "./components/LandingPage";
-import SurveyPage from "./components/survey/SurveyPage";
-import SurveyResults from "./components/survey/SurveyResults";
-import CustomMap from "./components/map/CustomMap";
-import PinsList from "./components/PinList";
+import LandingPage from "./pages/LandingPage";
+import SurveyPage from "./pages/SurveyPage";
+import SurveyResults from "./pages/SurveyResultsPage";
+import MapPage from "./pages/MapPage";
+import PinsPage from "./pages/PinsPage";
 import DiscordCallback from "./components/DiscordCallback"; // we’ll create this
 import { UserProvider } from "./components/UserContext";
 
@@ -75,8 +75,8 @@ function App() {
                 <Route path="/home" element={<LandingPage />} />
                 <Route path="/survey" element={<SurveyPage backendUrl={backendUrl}/>} />
                 <Route path="/results" element={<SurveyResults backendUrl={backendUrl} />} />
-                <Route path="/map" element={<CustomMap backendUrl={backendUrl} />} />
-                <Route path="/pins" element={<PinsList backendUrl={backendUrl} />} />
+                <Route path="/map" element={<MapPage backendUrl={backendUrl} />} />
+                <Route path="/pins" element={<PinsPage backendUrl={backendUrl} />} />
                 <Route path="/auth/callback" element={<DiscordCallback backendUrl={backendUrl} />} />
               </Routes>
             </Box>
