@@ -107,6 +107,8 @@ export default function LandingPage() {
           sx={{
             display: "flex",
             justifyContent: {xs: "center", lg: "flex-end"},
+            maxWidth: "calc(100vw - 2rem)",
+            overflowX: "hidden",
           }}
         >
           <iframe
