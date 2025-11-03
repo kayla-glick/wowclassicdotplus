@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 import NavbarDiscordLogin from "./NavbarDiscordLogin";
+import { Link } from "@mui/material";
 
 const pages = ["Home", "Survey", "Results", "Map", "Pins"];
 
@@ -29,40 +30,44 @@ export default function Navbar() {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       sx={{
-        backgroundColor: theme.palette.background.paper,
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        py: 1,
         zIndex: 1300,
       }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+        <Toolbar
+          disableGutters
+          sx={{
+            alignItems: "flex-end",
+            gap: 3
+          }}
+        >
           {/* Logo */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
-            <a href="/">
-              <img
-                src="/logo.png"
-                alt="Logo"
-                style={{
-                  width: "3.5vw",
-                  cursor: "pointer",
-                  borderRadius: "0.2vw",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.1)";
-                  e.currentTarget.style.boxShadow = `0 0 0.8vw ${theme.palette.primary.main}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1.0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              />
-            </a>
-          </Box>
+          <Link
+            href="/"
+            sx={{
+              alignItems: "center",
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            <img
+              src="/Classic_Plus_Color_and_Cog.webp"
+              alt="Logo"
+              style={{
+                height: "4rem"
+              }}
+            />
+          </Link>
 
           {/* Hamburger menu for small screens */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="menu"
@@ -103,23 +108,24 @@ export default function Navbar() {
           {/* Links for medium+ screens */}
           <Box
             sx={{
-              flexGrow: 1,
               display: { xs: "none", md: "flex" },
-              justifyContent: "center",
-              gap: 3,
+              marginLeft: "auto"
             }}
           >
             {pages.map((page) => {
-              const isActive = location.pathname === `/${page.toLowerCase()}`;
+              const path = page.toLowerCase();
+              const isActive = location.pathname === `/${path}`;
               return (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  href={`/${page.toLowerCase()}`}
+                  href={`/${path}`}
                   sx={{
-                    position: "relative",
                     color: theme.palette.text.primary,
                     fontWeight: isActive ? "bold" : "normal",
+                    py: 1.75,
+                    px: 2.5,
+                    marginBottom: "calc(-0.5rem - 1px)",
                     "&::after": {
                       content: '""',
                       position: "absolute",

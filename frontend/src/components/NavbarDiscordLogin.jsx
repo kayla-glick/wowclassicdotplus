@@ -32,38 +32,14 @@ export default function NavbarDiscordLogin() {
     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
       {!user ? (
         <Button
-          variant="contained"
+          color="discord"
           onClick={handleLogin}
-          sx={{
-            backgroundColor: "#5865F2",
-            color: "white",
-            padding: { xs: '8px 16px', sm: '10px 20px' },
-            borderRadius: 2,
-            fontWeight: "bold",
-            fontSize: { xs: '0.875rem', sm: '0.9rem', md: '1rem' },
-            textTransform: 'none',
-            minWidth: 'auto',
-            whiteSpace: 'nowrap',
-            '&:hover': {
-              backgroundColor: '#4752C4',
-              transform: 'scale(1.05)',
-              boxShadow: '0 0 15px rgba(88, 101, 242, 0.5)',
-            },
-            transition: 'all 0.3s ease',
-          }}
+          variant="contained"
         >
           Login with Discord
         </Button>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: { xs: 1, sm: 1.5 },
-            flexWrap: { xs: 'wrap', sm: 'nowrap' },
-            justifyContent: { xs: 'center', sm: 'flex-start' },
-          }}
-        >
+        <Box color="discord">
           <Avatar
             src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`}
             alt="avatar"
@@ -94,7 +70,6 @@ export default function NavbarDiscordLogin() {
               padding: { xs: '6px 12px', sm: '8px 16px' },
               borderRadius: 1.5,
               fontSize: { xs: '0.75rem', sm: '0.8rem' },
-              textTransform: 'none',
               minWidth: 'auto',
               whiteSpace: 'nowrap',
               '&:hover': {
