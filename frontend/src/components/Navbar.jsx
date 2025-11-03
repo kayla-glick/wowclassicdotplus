@@ -1,32 +1,21 @@
 import React from "react";
+
 import { useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
-import NavbarDiscordLogin from "./NavbarDiscordLogin";
+import DiscordLogin from "./navbar/DiscordLogin";
 import { Link } from "@mui/material";
+import HamburgerMenu from "./navbar/HamburgerMenu";
 
 const pages = ["Home", "Survey", "Results", "Map", "Pins"];
 
 export default function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const theme = useTheme();
   const location = useLocation();
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   return (
     <AppBar
@@ -41,8 +30,7 @@ export default function Navbar() {
         <Toolbar
           disableGutters
           sx={{
-            alignItems: "flex-end",
-            gap: 3
+            alignItems: { xs: "center", md: "flex-end" },
           }}
         >
           {/* Logo */}
@@ -50,7 +38,6 @@ export default function Navbar() {
             href="/"
             sx={{
               alignItems: "center",
-              display: { xs: "none", md: "flex" },
             }}
           >
             <img
@@ -63,53 +50,13 @@ export default function Navbar() {
           </Link>
 
           {/* Hamburger menu for small screens */}
-          <Box
-            sx={{
-              display: { xs: "flex", md: "none" },
-            }}
-          >
-            <IconButton
-              size="large"
-              aria-label="menu"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              keepMounted
-              transformOrigin={{ vertical: "top", horizontal: "left" }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    color={
-                      location.pathname === `/${page.toLowerCase()}`
-                        ? theme.palette.primary.main
-                        : theme.palette.text.primary
-                    }
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <HamburgerMenu pages={pages} />
 
           {/* Links for medium+ screens */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
-              marginLeft: "auto"
+              ml: "auto"
             }}
           >
             {pages.map((page) => {
@@ -118,14 +65,13 @@ export default function Navbar() {
               return (
                 <Button
                   key={page}
-                  onClick={handleCloseNavMenu}
                   href={`/${path}`}
                   sx={{
                     color: theme.palette.text.primary,
                     fontWeight: isActive ? "bold" : "normal",
                     py: 1.75,
                     px: 2.5,
-                    marginBottom: "calc(-0.5rem - 1px)",
+                    mb: "calc(-0.5rem - 1px)",
                     "&::after": {
                       content: '""',
                       position: "absolute",
@@ -148,8 +94,12 @@ export default function Navbar() {
           </Box>
 
           {/* Discord login/avatar */}
-          <Box sx={{ flexGrow: 0 }}>
-            <NavbarDiscordLogin />
+          <Box
+            sx={{
+              display: { xs: "none", md: "block" }
+            }}
+          >
+            <DiscordLogin />
           </Box>
         </Toolbar>
       </Container>

@@ -67,7 +67,7 @@ function App() {
               sx={{
                 display: "flex",
                 flexGrow: 1,
-                p: 4,
+                py: {xs: 2, md: 4},
               }}
             >
               <Routes>
