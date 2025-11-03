@@ -6,19 +6,18 @@ import {
   Avatar,
   Typography,
   useTheme,
-  MenuItem,
-  ListItemIcon,
 } from "@mui/material";
-import { KeyboardArrowDown, Logout } from "@mui/icons-material";
+import { KeyboardArrowDown } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import { UserContext } from "../../UserContext";
+import LogoutLink from "../LogoutLink";
 
 export default function LoggedInMenu() {
   const [isOpen, setIsOpen] = React.useState(false);
   const anchorElRef = React.useRef(null);
 
   const theme = useTheme();
-  const { user, logout } = React.useContext(UserContext);
+  const { user } = React.useContext(UserContext);
 
   return (
     <Box
@@ -29,13 +28,13 @@ export default function LoggedInMenu() {
       }}
     >
       <Button
-        endIcon={<KeyboardArrowDown />}
+        endIcon={<KeyboardArrowDown sx={{display: {xs: "none", md: "block"}}} />}
         onClick={() => setIsOpen(!isOpen)}
         ref={anchorElRef}
         sx={{
           color: "#FFFFFF",
           mb: -1,
-          px: 2.5
+          px: {xs: 2, md: 2.5}
         }}
         variant="text"
       >
@@ -56,7 +55,6 @@ export default function LoggedInMenu() {
             fontWeight: "bold",
             fontSize: { xs: '0.875rem', sm: '0.9rem', md: '1rem' },
             whiteSpace: "nowrap",
-            display: { xs: 'none', sm: 'block' },
           }}
         >
           {user.username}
@@ -75,18 +73,7 @@ export default function LoggedInMenu() {
           display: { xs: "none", md: "block" }
         }}
       >
-        <MenuItem
-          onClick={logout}
-          sx={{color: theme.palette.error.main}}
-        >
-          <ListItemIcon>
-            <Logout
-              fontSize="small"
-              sx={{color: theme.palette.error.main}}
-            />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
+        <LogoutLink />
       </Menu>
     </Box>
   )

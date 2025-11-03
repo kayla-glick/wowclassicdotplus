@@ -10,6 +10,13 @@ const theme = createTheme({
         }
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+        }
+      }
+    }
   },
   palette: {
     background: {
@@ -23,7 +30,7 @@ const theme = createTheme({
     mode: 'dark',
     text: {
       wowGold: "#F8B700",
-    }
+    },
   },
   typography: {
     fontFamily: "'Roboto', sans-serif",
