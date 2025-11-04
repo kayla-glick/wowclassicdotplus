@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import SurveySummary from "./SurveySummary"; // the chart component we'll define
+import SurveySummary from "../components/survey/SurveySummary"; // the chart component we'll define
+import { Container } from "@mui/material";
 
 export default function SurveyResultsPage({ backendUrl }) {
   const [surveyData, setSurveyData] = useState({});
@@ -25,5 +26,9 @@ export default function SurveyResultsPage({ backendUrl }) {
   if (loading) return <p style={{ textAlign: "center", marginTop: 50 }}>Loading...</p>;
   if (error) return <p style={{ textAlign: "center", marginTop: 50, color: "red" }}>Error: {error}</p>;
 
-  return <SurveySummary surveyData={surveyData} />;
+  return (
+    <Container maxWidth="xl">
+      <SurveySummary surveyData={surveyData} />
+    </Container>
+  );
 }

@@ -5,12 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from "./components/UserContext";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "./components/theme";
+import theme from './utils/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={theme}>
-      <UserProvider>
+    <UserProvider>
       <App />
     </UserProvider>
   </ThemeProvider>

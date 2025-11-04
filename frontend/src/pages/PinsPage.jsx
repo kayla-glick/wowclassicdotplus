@@ -32,8 +32,8 @@ import {
   ThumbUp,
   ThumbDown,
 } from "@mui/icons-material";
-import polygons from "./polygons";
-import { UserContext } from "./UserContext";
+import polygons from "../components/polygons";
+import { UserContext } from "../components/UserContext";
 
 let sessionId = sessionStorage.getItem("session_id");
 if (!sessionId) {
@@ -50,7 +50,7 @@ const CATEGORY_COLORS = {
   other: "#8b5cf6",
 };
 
-function PinsList({ backendUrl }) {
+export default function PinsPage({ backendUrl }) {
   const theme = useTheme();
   const { user: discordUser } = useContext(UserContext);
   const [pins, setPins] = useState([]);
@@ -215,8 +215,8 @@ function PinsList({ backendUrl }) {
   return (
     <Box sx={{ 
       maxWidth: "1200px", 
-      margin: "80px auto", 
-      padding: 3,
+      mx: "auto", 
+      px: 3,
       minHeight: "100vh"
     }}>
       <Typography variant="h4" component="h2" align="center" gutterBottom>
@@ -401,5 +401,3 @@ function PinsList({ backendUrl }) {
     </Box>
   );
 }
-
-export default PinsList;
