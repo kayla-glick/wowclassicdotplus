@@ -725,7 +725,10 @@ useEffect(() => {
                   >
                     <Popup>
                       <Box sx={{ minWidth: 220 }}>
-                        <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>{pin.name}</Typography>
+                        <Typography variant="subtitle1" sx={{ display: "flex", alignItems: "center", gap: 0.5, fontWeight: "bold" }}>
+                          <img src={getMarkerIconUrl(pin.category)} alt={pin.category} height="16" width="16" />
+                          {pin.name}
+                        </Typography>
                         <Typography variant="caption" color="text.secondary">{pin.category}</Typography>
                         <Typography variant="body2" sx={{ mt: 1 }}>{pin.description}</Typography>
                         <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
