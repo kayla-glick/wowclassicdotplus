@@ -36,10 +36,11 @@ import {
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import PinForm from "../components/PinForm";
-import polygons from "../components/polygons";
+import polygons from "../components/map/polygons";
 import * as turf from "@turf/turf";
 import { UserContext } from "../components/UserContext";
 import CloseIcon from '@mui/icons-material/Close';
+import markerIcons from '../components/map/markers.js';
 
 /* ===========================
    Constants & Configuration
@@ -56,71 +57,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
   shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
 });
-
-// Marker icons
-const markerIcons = {
-  Lore: new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/TRACKING/Profession.PNG?raw=true",
-    iconSize: [40, 40],
-    iconAnchor: [20, 41],
-    popupAnchor: [1, -34],
-  }),
-  Raid: new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/Raid_Icon.PNG?raw=true",
-    iconSize: [75, 75],
-    iconAnchor: [35, 55],
-    popupAnchor: [1, -34],
-  }),
-  Quest: new L.Icon({
-    iconUrl: "https://i.imgur.com/IPEOEew.png",
-    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-    iconSize: [12, 40],
-    iconAnchor: [5, 31],
-    popupAnchor: [1, -34],
-  }),
-  Dungeon: new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/Dungeon_Icon.PNG?raw=true",
-    iconSize: [75, 75],
-    iconAnchor: [35, 55],
-    popupAnchor: [1, -34],
-  }),
-  "Flight Path": new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/TRACKING/FlightMaster.PNG?raw=true",
-    iconSize: [40, 40],
-    iconAnchor: [25, 35],
-    popupAnchor: [1, -34],
-  }),
-  Zone: new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/Buttons/UI-PlusButton-Up.PNG?raw=true",
-    iconSize: [40, 40],
-    iconAnchor: [20, 35],
-    popupAnchor: [1, -34],
-  }),
-  PvP: new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/WorldStateFrame/CombatSwords.PNG?raw=true",
-    iconSize: [100, 100],
-    iconAnchor: [25, 45],
-    popupAnchor: [1, -34],
-  }),
-  "World Boss": new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/Minimap_skull_normal.PNG?raw=true",
-    iconSize: [50, 50],
-    iconAnchor: [25, 45],
-    popupAnchor: [1, -34],
-  }),
-  "World Event": new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/Minimap_shield_elite.PNG?raw=true",
-    iconSize: [50, 50],
-    iconAnchor: [25, 45],
-    popupAnchor: [1, -34],
-  }),
-  Races: new L.Icon({
-    iconUrl: "https://github.com/Gethe/wow-ui-textures/blob/live/MINIMAP/Minimap_shield_elite.PNG?raw=true",
-    iconSize: [50, 50],
-    iconAnchor: [25, 45],
-    popupAnchor: [1, -34],
-  }),
-};
 
 /* ===========================
    Map Child Components 
@@ -349,7 +285,12 @@ function FilterPanel({
                 sx={{ py: 0.5 }}
               />
             }
-            label={<Typography variant="caption">{cat}</Typography>}
+            label={
+              <Typography variant="caption" sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                <img src={markerIcons[cat]?.options.iconUrl} alt={cat} height="16" width="16" />
+                {cat}
+              </Typography>
+            }
             sx={{ 
               display: "flex",
               alignItems: "center",
@@ -908,8 +849,9 @@ useEffect(() => {
                 ) : (
                   filteredPins.map((pin) => (
                     <Paper key={pin.id} sx={{ p: 1, mb: 1 }}>
-                      <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-                        {pin.name} <Typography component="span" sx={{ color: theme.palette.text.secondary }}>({pin.category})</Typography>
+                      <Typography variant="subtitle1" sx={{ display: "flex", alignItems: "center", gap: 0.5, fontWeight: "bold" }}>
+                        <img src={markerIcons[pin.category]?.options.iconUrl} alt={pin.category} height="16" width="16" />
+                        {pin.name}
                       </Typography>
                       <Typography variant="body2" sx={{ mt: 0.5 }}>{pin.description}</Typography>
                       <Typography variant="caption" sx={{ mt: 0.5, display: "block" }}>Zone: {getPolygonName(pin) || "N/A"}</Typography>

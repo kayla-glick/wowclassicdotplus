@@ -32,7 +32,7 @@ import {
   ThumbUp,
   ThumbDown,
 } from "@mui/icons-material";
-import polygons from "../components/polygons";
+import polygons from "../components/map/polygons";
 import { UserContext } from "../components/UserContext";
 
 let sessionId = sessionStorage.getItem("session_id");
