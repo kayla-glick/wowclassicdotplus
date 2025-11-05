@@ -40,7 +40,7 @@ import polygons from "../components/map/polygons";
 import * as turf from "@turf/turf";
 import { UserContext } from "../components/UserContext";
 import CloseIcon from '@mui/icons-material/Close';
-import markerIcons from '../components/map/markers.js';
+import markerIcons, { getMarkerIconUrl } from '../components/map/markers.js';
 
 /* ===========================
    Constants & Configuration
@@ -287,7 +287,7 @@ function FilterPanel({
             }
             label={
               <Typography variant="caption" sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                <img src={markerIcons[cat]?.options.iconUrl} alt={cat} height="16" width="16" />
+                <img src={getMarkerIconUrl(cat)} alt={cat} height="16" width="16" />
                 {cat}
               </Typography>
             }
@@ -850,7 +850,7 @@ useEffect(() => {
                   filteredPins.map((pin) => (
                     <Paper key={pin.id} sx={{ p: 1, mb: 1 }}>
                       <Typography variant="subtitle1" sx={{ display: "flex", alignItems: "center", gap: 0.5, fontWeight: "bold" }}>
-                        <img src={markerIcons[pin.category]?.options.iconUrl} alt={pin.category} height="16" width="16" />
+                        <img src={getMarkerIconUrl(pin.category)} alt={pin.category} height="16" width="16" />
                         {pin.name}
                       </Typography>
                       <Typography variant="body2" sx={{ mt: 0.5 }}>{pin.description}</Typography>

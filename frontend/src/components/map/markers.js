@@ -58,4 +58,8 @@ const markerIcons = {
   }),
 };
 
+export function getMarkerIconUrl(category) {
+  return markerIcons[category]?.options.iconUrl
+}
+
 export default markerIcons;
